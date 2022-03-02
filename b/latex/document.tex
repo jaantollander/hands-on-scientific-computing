@@ -1,0 +1,83 @@
+\documentclass{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Metadata
+\title{LaTeX Exercise}
+\author{Jaan Tollander de Balsch}
+\date{\today}
+
+% Referencing
+\usepackage[backend=biber,style=numeric]{biblatex}
+\addbibresource{bibliography.bib}
+
+%\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+%\bibliography{bibliography}
+
+
+%% Document
+\begin{document}
+
+% First page
+\clearpage
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+
+% Second page
+\thispagestyle{empty}
+\tableofcontents{}
+\newpage
+
+
+% Third page
+\section{Maths}
+\setcounter{page}{1}
+
+\subsection{Pythagorean Theorem}
+\begin{align}
+a^2+b^2=c^2
+\end{align}
+
+Given a right triangle with two sides $\mathbf{a}$ and $\mathbf{b}$ and hypotenuse $\mathbf{c}$, the combined area of squares $a^2$ and $b^2$ equals to the area of the square $c^2$.
+
+Centered equation
+
+\begin{align}
+f(x)=x^2
+\end{align}
+
+
+\section{Figure}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{800x400.png}
+    \caption{Here is my caption. \cite{htmlcom}}
+\end{figure}
+
+
+\section{Table}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c c c c|} 
+ \hline
+ 1 & 6 & 87837 & 787 \\ 
+ 2 & 7 & 78 & 5415 \\
+ 3 & 545 & 778 & 7507 \\
+ 4 & 545 & 18744 & 7560 \\
+ \hline
+\end{tabular}
+\caption{My table}
+\label{table:1}
+\end{table}
+
+
+\section{Referencing}
+Reference to the figure \cite{htmlcom}
+
+\printbibliography
+
+\end{document}
