@@ -1,53 +1,51 @@
+#!/usr/bin/env python3
+from decimal import Decimal, getcontext
+from math import factorial
+import argparse
 import random
-import decimal
 
+parser = argparse.ArgumentParser()
+parser.add_argument(
+        'precision', type=int, help="Number of Pi digits")
+parser.add_argument(
+        'iters', type=int, help="Number of iterations")
+parser.add_argument(
+        '--seed', type=int, help="Random seed", default=42)
 
-# --- Chudnovsky Aslgorithm ---
-# Source for Chudnovsky algorithm:
-# https://gist.github.com/thebecwar/b53f3a9b6e0428a40b27d99745c794a8
+args = parser.parse_args()
 
-def fact(n):
-    m = 1
-    for i in range(1, n+1):
-        m *= i
-    return m
+precision = args.precision
+iterations = args.iters
+seed = args.seed
 
-def den(k):
-    a = decimal.Decimal(fact(6*k)*(545140134*k+13591409))
-    b = decimal.Decimal(fact(3*k)*(fact(k)**3)*((-262537412640768000)**k))
-    res = a / b
-    if k > 0:
-        return res + den(k - 1)
-    else:
-        return res
+getcontext().prec = precision + 1
+C = 426880*Decimal(10005).sqrt()
+M = Decimal(1)
+L = 13591409
+s = 13591409
+X = Decimal(1) 
+K = Decimal(6)
 
-def num():
-    d = decimal.Decimal(10005).sqrt()
-    return 426880 * decimal.Decimal(10005).sqrt()
-    
+for i in range(0, precision):
+    M *= (K**3 - 16*K) / ((i + 1)**3)
+    X *= 262537412640768000
+    L += 545140134
+    K += 12
+    s += Decimal((M*L)/X)
 
-def chudnovsky(precision):
-    k = 10 * precision
-    decimal.getcontext().prec = precision + 1
-    return num()/den(k)
+pi = C/s
+print("Using the Chudnovsky algorithm, Pi is {}" \
+        " with {} digits after the decimal point.".format(pi, precision))
 
+gen = random.Random(seed)
+in_circle_points = 0
 
-# -- Monte Carlo pi ---
+for _ in range(iterations):
+    x = gen.uniform(0, 1)
+    y = gen.uniform(0, 1) 
+    if x**2 + y**2 < 1:
+        in_circle_points += 1
 
-def is_in_circle(x, y):
-    return x**2 + y**2 <= 1
-
-def points_in_circle(iterations, n):
-    count = 0
-    for i in range(iterations):
-        x = random.random() 
-        y = random.random()
-        if is_in_circle(x, y):
-            count += 1
-    return count 
-
-def monte_carlo_pi(iterations, n):
-    return 4*points_in_circle(iterations, n)/iterations
-
-if __name__ == "__main__":
-    pass
+pi = in_circle_points*4/iterations
+print("Using the monte carlo algorithm, Pi is {} with {} iterations" \
+    " and seed value {}.".format(pi, iterations, seed))
