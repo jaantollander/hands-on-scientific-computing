@@ -1,0 +1,52 @@
+quicksort
+         127268 function calls (106058 primitive calls) in 0.065 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.065    0.065 <string>:1(<module>)
+    21211    0.008    0.000    0.012    0.000 copy.py:66(copy)
+  21211/1    0.025    0.000    0.065    0.065 sorting.py:19(quicksort)
+    10605    0.014    0.000    0.014    0.000 sorting.py:25(<listcomp>)
+    10605    0.013    0.000    0.013    0.000 sorting.py:26(<listcomp>)
+        1    0.000    0.000    0.065    0.065 {built-in method builtins.exec}
+    21211    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+    21211    0.002    0.000    0.002    0.000 {method 'copy' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+    21211    0.002    0.000    0.002    0.000 {method 'get' of 'dict' objects}
+
+
+quicksort_lumoto
+         53380 function calls (32032 primitive calls) in 0.051 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.051    0.051 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 copy.py:66(copy)
+    10674    0.039    0.000    0.039    0.000 sorting.py:30(partition)
+  21349/1    0.010    0.000    0.051    0.051 sorting.py:43(_quicksort)
+        1    0.000    0.000    0.051    0.051 sorting.py:57(quicksort_lumoto)
+        1    0.000    0.000    0.051    0.051 {built-in method builtins.exec}
+    21350    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+
+
+insertion_sort
+         8 function calls in 8.560 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    8.560    8.560 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 copy.py:66(copy)
+        1    8.560    8.560    8.560    8.560 sorting.py:5(insertion_sort)
+        1    0.000    0.000    8.560    8.560 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+        1    0.000    0.000    0.000    0.000 {method 'copy' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+
+
