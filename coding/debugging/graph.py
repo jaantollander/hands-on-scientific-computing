@@ -36,12 +36,13 @@ class Graph:
 
         # Start the BFS
         while q:
+            # TODO: increment distance
             v, dist = q.popleft()
             vertices = self.neighbours(v)
             maxdist = max(maxdist, dist)
             for neighbour in vertices:
                 if not seen[neighbour]:
-                    q.append((neighbour, dist))
+                    q.append((neighbour, dist+1))
                     seen[neighbour] = True
 
         # All the vertices should be seen in a connected graph
